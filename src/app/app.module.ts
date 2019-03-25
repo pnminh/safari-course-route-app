@@ -7,6 +7,7 @@ import { MeetingsComponent } from "./meetings/meetings.component";
 import { UsersComponent } from "./users/users.component";
 import { HeadersComponent } from "./headers/headers.component";
 import { RoutingModule } from "./routing/routing.module";
+import { UserComponent } from './users/user/user.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RoutingModule } from "./routing/routing.module";
     HomeComponent,
     MeetingsComponent,
     UsersComponent,
-    HeadersComponent
+    HeadersComponent,
+    UserComponent
   ],
   imports: [BrowserModule, RoutingModule],
   providers: [],

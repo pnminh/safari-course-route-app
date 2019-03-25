@@ -1,15 +1,27 @@
 <h1>Our current users</h1>
-<hr>
+<hr />
 <div class="container-fluid">
   <div class="card-deck">
-    <div class="col-md-3" *ngFor="let user of users">
-      <div class="card text-white bg-info my-3">
-        <img class="card-img-top" [src]="user.avatarPath" alt="text" />
-        <div class="card-body">
-          <h5 class="card-title">{{ user.username }}</h5>
-          <p class="card-text">{{ user.email }}</p>
-        </div>
-      </div>
-    </div>
+    <app-user
+      class="col-md-3"
+      *ngFor="let user of users"
+      [user]="user"
+      style="cursor:pointer"
+      routerLink="/users/{{ user.id }}"
+    ></app-user>
   </div>
+  <ng-container *ngIf="users.length < 2">
+    <button class="btn btn-primary" routerLink="/users">Back to user lists</button>
+    <hr />
+    <h1>Recommended Users</h1>
+    <div class="card-deck">
+      <app-user
+        class="col-md-3"
+        *ngFor="let user of recommendatedUsers"
+        [user]="user"
+        style="cursor:pointer"
+        routerLink="/users/{{ user.id }}"
+      ></app-user>
+    </div>
+  </ng-container>
 </div>

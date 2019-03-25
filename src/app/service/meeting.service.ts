@@ -9,13 +9,8 @@ import * as uuid from "uuid";
 export class MeetingService {
   private meetings: Meeting[] = [];
   constructor(private userService: UserService) {
-    const users = this.userService.getAllUsers();
-
     for (let i = 0; i < 30; i++) {
-      const randomUsers = [];
-      for (let i = 0; i < 4; i++) {
-        randomUsers.push(users[Math.floor(Math.random() * users.length)]);
-      }
+      const randomUsers = this.userService.getRandomUserList(4);
       this.meetings.push({
         id: uuid.v4(),
         name: faker.lorem.slug(),

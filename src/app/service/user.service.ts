@@ -20,4 +20,16 @@ export class UserService {
   getAllUsers(): User[] {
     return this.users;
   }
+  getUserById(id: string): User {
+    return this.users.filter(user => user.id === id).pop();
+  }
+  getRandomUserList(size: number): User[] {
+    const randomUsers = [];
+    for (let i = 0; i < size; i++) {
+      randomUsers.push(
+        this.users[Math.floor(Math.random() * this.users.length)]
+      );
+    }
+    return randomUsers;
+  }
 }
