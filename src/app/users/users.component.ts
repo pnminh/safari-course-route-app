@@ -9,10 +9,10 @@ import { Subscription } from "rxjs";
   templateUrl: "./users.component.html",
   styleUrls: ["./users.component.css"]
 })
-export class UsersComponent implements OnInit, OnDestroy {
+export class UsersComponent implements OnInit{
   users: User[];
-  recommendatedUsers: User[];
-  paramsSubscription: Subscription;
+  /* recommendatedUsers: User[];
+  paramsSubscription: Subscription; */
   constructor(
     private userService: UserService,
     private route: ActivatedRoute
@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     }else{
       this.users = this.userService.getAllUsers();
     } */
-    this.paramsSubscription = this.route.params.subscribe((params: Params) => {
+    /* this.paramsSubscription = this.route.params.subscribe((params: Params) => {
       if (params.id) {
         this.users = [
           this.userService.getUserById(this.route.snapshot.params.id)
@@ -34,9 +34,10 @@ export class UsersComponent implements OnInit, OnDestroy {
       } else {
         this.users = this.userService.getAllUsers();
       }
-    });
+    }); */
+    this.users = this.userService.getAllUsers();
   }
-  ngOnDestroy(): void {
+  /* ngOnDestroy(): void {
     this.paramsSubscription.unsubscribe();
-  }
+  } */
 }

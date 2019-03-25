@@ -8,6 +8,7 @@ import { UsersComponent } from "./users/users.component";
 import { HeadersComponent } from "./headers/headers.component";
 import { RoutingModule } from "./routing/routing.module";
 import { UserComponent } from './users/user/user.component';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserComponent } from './users/user/user.component';
     MeetingsComponent,
     UsersComponent,
     HeadersComponent,
-    UserComponent
+    UserComponent,
+    UserDetailsComponent
   ],
   imports: [BrowserModule, RoutingModule],
   providers: [],

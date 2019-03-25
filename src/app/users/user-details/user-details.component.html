@@ -1,0 +1,19 @@
+<app-user
+  [user]="user"
+  style="cursor:pointer"
+  routerLink="/users/{{ user.id }}"
+></app-user>
+<button class="btn btn-primary" routerLink="/users">
+  Back to user lists
+</button>
+<hr />
+<h1>Recommended Users</h1>
+<div class="card-deck">
+  <app-user
+    class="col-md-3"
+    *ngFor="let user of recommendedUsers"
+    [user]="user"
+    style="cursor:pointer"
+    routerLink="/users/{{ user.id }}"
+  ></app-user>
+</div>
