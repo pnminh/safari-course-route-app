@@ -1,3 +1,4 @@
+import { AuthGuardService } from "./service/auth-guard.service";
 import { CustomNgbModule } from "./custom-ngb/custom-ngb.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -10,7 +11,10 @@ import { HeadersComponent } from "./headers/headers.component";
 import { RoutingModule } from "./routing/routing.module";
 import { UserComponent } from "./users/user/user.component";
 import { UserDetailsComponent } from "./users/user-details/user-details.component";
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { MeetingEditComponent } from "./meetings/meeting-edit/meeting-edit.component";
+import { MeetingComponent } from "./meetings/meeting/meeting.component";
+import { ErrorComponent } from './error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +23,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     UsersComponent,
     HeadersComponent,
     UserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    MeetingEditComponent,
+    MeetingComponent,
+    ErrorComponent
   ],
   imports: [BrowserModule, RoutingModule, CustomNgbModule],
   providers: [],

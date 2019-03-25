@@ -8,8 +8,11 @@
       meetings you are interested in
     </p>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" routerLink="/meetings" role="button"
-        >Check out our current meetings</a
+      <a *ngIf="loggedIn$ &&!(loggedIn$|async)"  class="btn btn-primary btn-lg" (click)="logIn()"  role="button"
+        >Log In</a
+      >
+      <a *ngIf="loggedIn$ && loggedIn$|async" class="btn btn-primary btn-lg" (click)="logOut()"  role="button"
+        >Log Out</a
       >
     </p>
   </div>
