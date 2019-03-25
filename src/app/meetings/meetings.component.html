@@ -1,22 +1,92 @@
-<h1>Our meetings</h1>
-<button class="btn btn-primary" (click)="goToUsersPage()" >Click here to see our users</button>
-<hr>
-<div class="container">
-<div class="card my-3 text-white bg-success" *ngFor="let meeting of meetings" >
-  <div class="card-header">{{meeting.time}}</div>
-  <div class="card-body">
-    <h3 class="card-title">{{meeting.name}}</h3>
-    <p class="card-text">{{meeting.description}}</p>
-  </div>
-  <div class="card-body">
-    <h5>Users registered:</h5>
-    <div class="card-deck">
-      <div class="card bg-dark text-white" *ngFor="let user of meeting.users" >
-        <div class="card-body">
-          <p class="card-text">{{user.username}}</p>
+<div class="container-fluid">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="card text-white bg-secondary sticky-top" style="top:70px">
+          <h4 class="card-header">Filter</h4>
+          <div class="card-body">
+            <div class="form-group col-11">
+              <div class="row">
+                <label for="form-date">From Date</label>
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="yyyy-mm-dd"
+                    name="from-date"
+                    id="from-date"
+                    ngbDatepicker
+                    #fromDatePk="ngbDatepicker"
+                    #fromDate
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="fa fa-calendar"
+                      (click)="fromDatePk.toggle()"
+                      type="button"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <label for="to-date">To Date</label>
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="yyyy-mm-dd"
+                    name="to-date"
+                    id="to-date"
+                    ngbDatepicker
+                    #toDatePk="ngbDatepicker"
+                    #toDate
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="fa fa-calendar"
+                      (click)="toDatePk.toggle()"
+                      type="button"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-light" (click)="onFiltering(fromDate,toDate)">
+              Find
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h1>{{meetings.length}} meetings found</h1>
+        <button class="btn btn-primary" (click)="goToUsersPage()">
+          Click here to see our users
+        </button>
+        <hr />
+        <div
+          class="card my-3 text-white bg-success"
+          *ngFor="let meeting of meetings"
+        >
+          <div class="card-header">{{ meeting.time }}</div>
+          <div class="card-body">
+            <h3 class="card-title">{{ meeting.name }}</h3>
+            <p class="card-text">{{ meeting.description }}</p>
+          </div>
+          <div class="card-body">
+            <h5>Users registered:</h5>
+            <div class="card-deck">
+              <div
+                class="card bg-dark text-white"
+                *ngFor="let user of meeting.users"
+              >
+                <div class="card-body">
+                  <p class="card-text">{{ user.username }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

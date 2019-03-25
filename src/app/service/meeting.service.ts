@@ -23,4 +23,9 @@ export class MeetingService {
   getAllMeetings(): Meeting[] {
     return this.meetings;
   }
+  getMeetingsFilterByDate(fromDate: Date, toDate: Date) {
+    return this.meetings.filter(
+      meeting => meeting.time > fromDate && meeting.time < toDate
+    );
+  }
 }
