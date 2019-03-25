@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { MeetingsComponent } from './meetings/meetings.component';
-import { UsersComponent } from './users/users.component';
-import { HeadersComponent } from './headers/headers.component';
+import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home/home.component";
+import { MeetingsComponent } from "./meetings/meetings.component";
+import { UsersComponent } from "./users/users.component";
+import { HeadersComponent } from "./headers/headers.component";
+import { RoutingModule } from "./routing/routing.module";
 
 @NgModule({
   declarations: [
@@ -15,10 +16,8 @@ import { HeadersComponent } from './headers/headers.component';
     UsersComponent,
     HeadersComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, RoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,3 +1,15 @@
-<p>
-  users works!
-</p>
+<h1>Our current users</h1>
+<hr>
+<div class="container-fluid">
+  <div class="card-deck">
+    <div class="col-md-3" *ngFor="let user of users">
+      <div class="card text-white bg-info my-3">
+        <img class="card-img-top" [src]="user.avatarPath" alt="text" />
+        <div class="card-body">
+          <h5 class="card-title">{{ user.username }}</h5>
+          <p class="card-text">{{ user.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
