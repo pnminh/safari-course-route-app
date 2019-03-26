@@ -13,8 +13,13 @@ export class ErrorComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params.code === "403") {
         this.errorMessage = "Forbidden! You need to log in first";
-      }else if(params.code === "404"){
+      } /* else if(params.code === "404"){
         this.errorMessage = "Page not found";
+      } */
+    });
+    this.route.data.subscribe(params => {
+      if (params.message) {
+        this.errorMessage = params.message;
       }
     });
   }

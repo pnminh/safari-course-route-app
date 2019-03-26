@@ -1,4 +1,4 @@
-import { CanDeactivateService } from './../service/can-deactivate.service';
+import { CanDeactivateService } from "./../service/can-deactivate.service";
 import { ErrorComponent } from "./../error/error.component";
 import { AuthGuardService } from "./../service/auth-guard.service";
 import { UserDetailsComponent } from "./../users/user-details/user-details.component";
@@ -15,7 +15,7 @@ const routes: Routes = [
     path: "meetings",
     component: MeetingsComponent,
     canActivate: [AuthGuardService],
-    canDeactivate:[CanDeactivateService]
+    canDeactivate: [CanDeactivateService]
   },
   {
     path: "users",
@@ -33,10 +33,16 @@ const routes: Routes = [
     component: ErrorComponent
   },
   {
+    path: "not-found",
+    component: ErrorComponent,
+    data: { message: "Page not found" }
+  },
+  {
     path: "",
     component: HomeComponent
   },
-  { path: "**", redirectTo: "/error?code=404" }
+  /* { path: "**", redirectTo: "/error?code=404" } */
+  { path: "**", redirectTo: "/not-found" }
 ];
 @NgModule({
   declarations: [],
