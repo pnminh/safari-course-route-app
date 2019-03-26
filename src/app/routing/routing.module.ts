@@ -1,3 +1,4 @@
+import { CanDeactivateService } from './../service/can-deactivate.service';
 import { ErrorComponent } from "./../error/error.component";
 import { AuthGuardService } from "./../service/auth-guard.service";
 import { UserDetailsComponent } from "./../users/user-details/user-details.component";
@@ -13,7 +14,8 @@ const routes: Routes = [
   {
     path: "meetings",
     component: MeetingsComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    canDeactivate:[CanDeactivateService]
   },
   {
     path: "users",

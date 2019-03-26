@@ -68,7 +68,7 @@
         <hr />
         <app-meeting
           [meeting]="meeting"
-          *ngFor="let meeting of meetings"
+          *ngFor="let meeting of meetings" (isEditEmitter)=checkMeetingEdit(meeting.id,$event)
         ></app-meeting>
       </div>
     </div>
