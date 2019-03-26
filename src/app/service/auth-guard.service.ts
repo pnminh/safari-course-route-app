@@ -17,13 +17,14 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | Observable<boolean> | Promise<boolean> {
-    return this.authService.isLoggedIn().then(isLoggedIn => {
+    return true;
+    /* return this.authService.isLoggedIn().then(isLoggedIn => {
       if (isLoggedIn) {
         return true;
       } else {
         this.router.navigate(["/error"], { queryParams: { code: "403" } });
       }
-    });
+    }); */
   }
   canActivateChild(
     route: ActivatedRouteSnapshot,

@@ -1,9 +1,10 @@
 import { NgModule } from "@angular/core";
-import { NgbDatepickerModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbDatepickerModule, NgbDateAdapter, NgbDateNativeAdapter } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [],
   imports: [NgbDatepickerModule],
-  exports: [NgbDatepickerModule]
+  exports: [NgbDatepickerModule],
+  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
 })
 export class CustomNgbModule {}

@@ -1,3 +1,80 @@
-<p>
-  meeting works!
-</p>
+<div class="card my-3 text-white bg-success">
+  <div class="card-header">{{ meeting.time }}</div>
+  <div class="card-body">
+    <h3 class="card-title">{{ meeting.name }}</h3>
+    <p class="card-text">{{ meeting.description }}</p>
+  </div>
+  <div class="card-body">
+    <h5>Users registered:</h5>
+    <div class="card-deck">
+      <div class="card bg-dark text-white" *ngFor="let user of meeting.users">
+        <div class="card-body">
+          <p class="card-text">{{ user.username }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="col-4">
+      <div class="row justify-content-between">
+        <button class="btn btn-primary col-5" (click)="edit()">
+          {{isEdit?"Done":"Edit"}}
+        </button>
+        <button class="btn btn-danger col-5" (click)="delete()" >Delete</button>
+      </div>
+    </div>
+    <ng-container *ngIf="isEdit">
+      <div class="col-12 my-3">
+        <div class="row text-white">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="time">Time</label>
+              <div class="input-group">
+                <input
+                  class="form-control"
+                  placeholder="yyyy-mm-dd"
+                  name="time"
+                  id="time"
+                  ngbDatepicker
+                  #timePk="ngbDatepicker"
+                  [(ngModel)]="meeting.time"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="fa fa-calendar"
+                    (click)="timePk.toggle()"
+                    type="button"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                class="form-control"
+                placeholder="meeting name"
+                name="name"
+                id="name"
+                [(ngModel)]="meeting.name"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea
+                class="form-control"
+                placeholder="meeting description"
+                name="description"
+                id="description"
+                [(ngModel)]="meeting.description"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

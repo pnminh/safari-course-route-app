@@ -14,7 +14,8 @@ import { UserDetailsComponent } from "./users/user-details/user-details.componen
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { MeetingEditComponent } from "./meetings/meeting-edit/meeting-edit.component";
 import { MeetingComponent } from "./meetings/meeting/meeting.component";
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from "./error/error.component";
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { ErrorComponent } from './error/error.component';
     MeetingComponent,
     ErrorComponent
   ],
-  imports: [BrowserModule, RoutingModule, CustomNgbModule],
+  imports: [BrowserModule, RoutingModule, CustomNgbModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -51,41 +51,25 @@
             </div>
           </div>
           <div class="card-footer">
-            <button class="btn btn-light" (click)="onFiltering(fromDate,toDate)">
+            <button
+              class="btn btn-light"
+              (click)="onFiltering(fromDate, toDate)"
+            >
               Find
             </button>
           </div>
         </div>
       </div>
-      <div class="col-md-9">
-        <h1>{{meetings.length}} meetings found</h1>
+      <div class="col-md-9" *ngIf="meetings$|async as meetings" >
+        <h1>{{ meetings.length }} meetings found</h1>
         <button class="btn btn-primary" (click)="goToUsersPage()">
           Click here to see our users
         </button>
         <hr />
-        <div
-          class="card my-3 text-white bg-success"
+        <app-meeting
+          [meeting]="meeting"
           *ngFor="let meeting of meetings"
-        >
-          <div class="card-header">{{ meeting.time }}</div>
-          <div class="card-body">
-            <h3 class="card-title">{{ meeting.name }}</h3>
-            <p class="card-text">{{ meeting.description }}</p>
-          </div>
-          <div class="card-body">
-            <h5>Users registered:</h5>
-            <div class="card-deck">
-              <div
-                class="card bg-dark text-white"
-                *ngFor="let user of meeting.users"
-              >
-                <div class="card-body">
-                  <p class="card-text">{{ user.username }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ></app-meeting>
       </div>
     </div>
   </div>

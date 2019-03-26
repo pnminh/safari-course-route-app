@@ -2,6 +2,7 @@ import { Meeting } from "./../model/meeting.model";
 import { MeetingService } from "./../service/meeting.service";
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-meetings",
@@ -9,7 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./meetings.component.css"]
 })
 export class MeetingsComponent implements OnInit {
-  meetings: Meeting[];
+  meetings$: Observable<Meeting[]>;
   constructor(
     private meetingService: MeetingService,
     private router: Router,
@@ -19,7 +20,7 @@ export class MeetingsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(queryParams => {
       if (!queryParams.from_date && !queryParams.to_Date) {
-        this.meetings = this.meetingService.getAllMeetings();
+        this.meetings$ = this.meetingService.getAllMeetings();
       } else {
         const fromDate: Date = queryParams.from_date
           ? new Date(queryParams.from_date)
@@ -27,10 +28,7 @@ export class MeetingsComponent implements OnInit {
         const toDate: Date = queryParams.to_date
           ? new Date(queryParams.to_date)
           : new Date();
-        this.meetings = this.meetingService.getMeetingsFilterByDate(
-          fromDate,
-          toDate
-        );
+        this.meetings$ = this.meetingService.getMeetingsFilterByDate(fromDate, toDate);
       }
     });
   }
