@@ -1,3 +1,4 @@
+import { UserResolverService } from "./../service/user-resolver.service";
 import { CanDeactivateService } from "./../service/can-deactivate.service";
 import { ErrorComponent } from "./../error/error.component";
 import { AuthGuardService } from "./../service/auth-guard.service";
@@ -21,6 +22,7 @@ const routes: Routes = [
     path: "users",
     component: UsersComponent,
     canActivateChild: [AuthGuardService],
+    resolve: { users: UserResolverService },
     children: [
       {
         path: ":id",

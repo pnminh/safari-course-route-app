@@ -1,3 +1,5 @@
+import { BehaviorSubject, Observable} from "rxjs";
+import {delay} from 'rxjs/operators'
 import { Injectable } from "@angular/core";
 import { User } from "../model/user.model";
 import * as faker from "faker";
@@ -7,6 +9,7 @@ import * as uuid from "uuid";
 })
 export class UserService {
   private users: User[] = [];
+  private users$: BehaviorSubject<User[]>;
   constructor() {
     for (let i = 0; i < 30; i++) {
       this.users.push({
@@ -16,8 +19,13 @@ export class UserService {
         avatarPath: faker.internet.avatar()
       });
     }
+    this.users$ = new BehaviorSubject(this.users);
   }
-  getAllUsers(): User[] {
+  getAllUsers(): Observable<User[]> {
+    //this mimics requests sent to servers
+    return this.users$.asObservable().pipe(delay(2000));
+  }
+  getAllUsersSync():User[]{
     return this.users;
   }
   getUserById(id: string): User {
